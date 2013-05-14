@@ -7,19 +7,22 @@ var express = require("express"),
 var publicDir = path.join(__dirname, "../Content");
 var app = express();
 
+app.set("env", "development");
+
 app.set("port", process.env.PORT || 8080);
 app.use(express.logger("dev"));
 //app.use(express.bodyParser());
-//app.use(express.methodOverride());
+app.use(express.json());
+app.use(express.methodOverride());
 //app.use(app.router);
 app.use(express.static(publicDir));
 
 app.get("/users/:id", crud.handles.get);
 app.post("/users", crud.handles.post);
 app.put("/users", crud.handles.put);
-app.del("/users/:ud", crud.handles.del);
+app.del("/users/:id", crud.handles.del);
 
-// development only
+// Development Mode
 if("development" === app.get("env")) {
     app.use(express.errorHandler());
 }
