@@ -2,6 +2,7 @@
 mongoose.connect("mongodb://localhost/test");
 
 var User = mongoose.model("User", { name: String });
+
 User.schema.options.toJSON = {transform: function(doc, ret, options) {
     delete ret.__v;
 }};

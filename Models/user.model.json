@@ -1,0 +1,14 @@
+﻿{
+    "name": "User",
+    "fields": {
+        "name": "string",
+        "age": "number"
+    },
+    "functions": {
+        "validation": {
+            "client": "saveClient",
+            "server": "saveServer",
+            "both": "save"
+        }
+    }
+}
